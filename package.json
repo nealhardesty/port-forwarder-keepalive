@@ -1,0 +1,11 @@
+{
+  "name": "port-forwarder-keepalive",
+  "description": "Simple Keepalive Remote Port Forwarder",
+  "author": "Neal Hardesty <nealhardesty@yahoo.com>",
+	"license": "MIT",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+		"ssh2": "*"
+  }
+}
