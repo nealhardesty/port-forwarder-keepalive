@@ -13,7 +13,7 @@ REMOTEPORT="$2"
 LOCALHOST="$3"
 LOCALPORT="$4"
 
-if [ -z "$HOST" -o -z "$REMOTEPORT" ]; then
+if [ -z "$REMOTEHOST" -o -z "$REMOTEPORT" ]; then
 	echo Usage: $0 '<remote hostname> <remote port> [local host (localhost)] [local port (22)]'
 	exit 255
 fi
@@ -28,7 +28,7 @@ while true; do
 	ping -o 8.8.8.8 >> /dev/null 2>&1
 	echo "done. "
 
-	echo $(date "+%H:%M:%S") Attempting to connect $HOST:$REMOTEPORT to $LOCALHOST:$LOCALPORT
+	echo $(date "+%H:%M:%S") Attempting to connect $REMOTEHOST:$REMOTEPORT to $LOCALHOST:$LOCALPORT
 
 	ssh -N -o "ExitOnForwardFailure yes" -o "ServerAliveCountMax 3" -o "ServerAliveInterval 5" -R '*':$REMOTEPORT:$LOCALHOST:$LOCALPORT $REMOTEHOST
 	echo $(date "+%H:%M:%S") ssh exited with $?.  Will attempt reconnect.
